@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+.display-list {
+    // display: none;
+    position: absolute;
+    top: 46px;
+    background-color: #313136;
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 100;
+}
+
+.display-list .li {
+    list-style: none;
+    cursor: pointer;
+    padding: 6px;
+    width: max-content;
+}
+
+.display-list .li a {
+    margin-top: 20px !important;
+    color: white;
+}
+
+.display-list .li a:hover {
+    color: #E63572;
+}
+
+.auth {
+    cursor: pointer;
+}
