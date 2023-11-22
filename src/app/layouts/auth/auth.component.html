@@ -28,7 +28,7 @@
                                             <input type="text" class="form-control" placeholder="Prenom" [(ngModel)]="prenom" name="prenom">
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
-                                            <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="nom" name="nom">
+                                            <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="nom" name="nom" [value]="">
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
                                             <input type="email" class="form-control" placeholder="Email" [(ngModel)]="email" name="email">
@@ -56,10 +56,11 @@
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                                     <p class="mb-2 text-sm mx-auto">
                                         Vous avez déjà un compte?
-                                        <a href="../pages/sign-in.html"
+                                        <a href="#"
                                             class="text-primary text-gradient font-weight-bold">Se connecter</a>
                                     </p>
                                 </div>
+                                <!-- <button type="button" class="btn btn-primary" (click)="alerter()">Primary</button> -->
                             </div>
                         </div>
                     </div>

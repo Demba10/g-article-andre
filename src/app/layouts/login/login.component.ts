@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsersServicesService } from 'src/app/services/users-services.service';
 
 @Component({
   selector: 'app-login',
@@ -15,26 +16,32 @@ export class LoginComponent implements OnInit {
   authPassword!: string;
   authUser!: any;
   users!: any[];
+  userService!: any;
 
   // }
 
   // Les Méthodes {
   
   ngOnInit(): void {
-    this.users = JSON.parse(localStorage.getItem('users') || '[]') 
+    this.users = JSON.parse(localStorage.getItem('users') || '[]');
+    this.serviceUser.getUsers().subscribe(users => {
+      this.userService = users;
+    });
   }
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private serviceUser: UsersServicesService
+  ) { }
 
   authentify() {
-    let found = this.users.find((ele) => ele.mail == this.authMail);
+    let found = this.userService.find((ele: { email: string; }) => ele.email == this.authMail);
     if (found) {
       this.users.forEach(element => {
-        if (element.mail == this.authMail) {
+        if (element.email == this.authMail) {
           element.auth = true;
           this.stateAuth = true;
           this.authName = element.mail;
-          localStorage.setItem('users', JSON.stringify(this.users))
           this.router.navigate(['accueil']);
         }
       });
