@@ -1,4 +1,9 @@
-#btnListArchiv{
+#commentImage{
+   height: 90px !important;
+   border-radius: 50%;
+}
+
+#btnListMore{
     border: 1px solid #E73874;
     color: #E73874;
     font-weight: bold;
@@ -7,7 +12,7 @@
     background-color: white;
 }
 
-#btnListArchiv:focus-within{
+#btnListMore:focus-within{
     background-color: #E73874;
     color: white;
 }

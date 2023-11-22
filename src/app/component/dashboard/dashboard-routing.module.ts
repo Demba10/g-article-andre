@@ -5,6 +5,7 @@ import { AccueilComponent } from '../accueil/accueil.component';
 import { AjoutArticleComponent } from '../ajout-article/ajout-article.component';
 import { ListArticleComponent } from '../list-article/list-article.component';
 import { CorbeilleComponent } from '../corbeille/corbeille.component';
+import { CommentairesComponent } from '../commentaires/commentaires.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,9 @@ const routes: Routes = [
       },
       {
         path: 'corbeille', component: CorbeilleComponent
+      },
+      {
+        path: 'commentaires', component: CommentairesComponent
       }
     ]
   }

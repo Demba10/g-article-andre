@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './layouts/auth/auth.component';
@@ -12,6 +12,7 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { AjoutArticleComponent } from './component/ajout-article/ajout-article.component';
 import { ListArticleComponent } from './component/list-article/list-article.component';
 import { CorbeilleComponent } from './component/corbeille/corbeille.component';
+import { CommentairesComponent } from './component/commentaires/commentaires.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,15 @@ import { CorbeilleComponent } from './component/corbeille/corbeille.component';
     SidebarComponent,
     AjoutArticleComponent,
     ListArticleComponent,
-    CorbeilleComponent
+    CorbeilleComponent,
+    CommentairesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
