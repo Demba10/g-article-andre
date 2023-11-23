@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+searchValue: any;
+searchResults: any;
+search() {
+throw new Error('Method not implemented.');
+}
 
 }

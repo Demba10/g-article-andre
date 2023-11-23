@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,23 @@ export class CommentServiceService {
     const nextPageUrl = `${this.apiUrl}?_page=${page}&_limit=${limit}`;
     return this.http.get<any[]>(nextPageUrl);
   }
+
+
+
+  searchComments(searchTerm: string): Observable<Comment[]> {
+    // Suppose que vous avez déjà une méthode getComments() pour récupérer tous les commentaires
+    return this.getComments().pipe(
+      map((comments: any[]) => {
+        if (!searchTerm.trim()) {
+          return comments; // Retourne tous les commentaires si la barre de recherche est vide
+        }
+        // Filtre les commentaires dont le texte correspond au terme de recherche
+        return comments.filter(comment => comment.body.toLowerCase().includes(searchTerm.toLowerCase()));
+      })
+    );
+  }
+
+  
 
 }
 
