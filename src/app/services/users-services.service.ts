@@ -6,6 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsersServicesService {
+  post<T>(arg0: string, post: any): Observable<any> {
+    throw new Error('Method not implemented.');
+  }
 
   private apiUrl = 'https://jsonplaceholder.typicode.com';
 

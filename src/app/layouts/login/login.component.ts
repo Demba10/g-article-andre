@@ -16,32 +16,38 @@ export class LoginComponent implements OnInit {
   authPassword!: string;
   authUser!: any;
   users!: any[];
-  userService!: any;
+  usersUs!: any[];
+  usersUsItem!: any;
 
   // }
 
   // Les Méthodes {
-  
   ngOnInit(): void {
-    this.users = JSON.parse(localStorage.getItem('users') || '[]');
-    this.serviceUser.getUsers().subscribe(users => {
-      this.userService = users;
+    this.us.getUsers().subscribe(users => {
+      this.usersUs = users;
     });
+    this.us.getUserById(3).subscribe(users => {
+      this.usersUsItem = users;
+      console.log(this.usersUsItem);
+    });
+
+    this.users = JSON.parse(localStorage.getItem('users') || '[]')
   }
 
   constructor(
     private router: Router,
-    private serviceUser: UsersServicesService
+    private us: UsersServicesService
   ) { }
 
   authentify() {
-    let found = this.userService.find((ele: { email: string; }) => ele.email == this.authMail);
+    let found = this.users.find((ele) => ele.mail == this.authMail);
     if (found) {
       this.users.forEach(element => {
-        if (element.email == this.authMail) {
+        if (element.mail == this.authMail) {
           element.auth = true;
           this.stateAuth = true;
           this.authName = element.mail;
+          localStorage.setItem('users', JSON.stringify(this.users))
           this.router.navigate(['accueil']);
         }
       });
