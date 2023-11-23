@@ -6,9 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CommentServiceService {
-  loadMoreComments(currentPage: number, limit: number) {
-    throw new Error('Method not implemented.');
-  }
+ 
 
   private apiUrl = 'https://jsonplaceholder.typicode.com/comments?_page=1&_limit=10';
 
@@ -22,6 +20,10 @@ export class CommentServiceService {
     return this.http.get<any>(`${this.apiUrl}/comment/${id}`);
   }
   
-  
+  loadMoreComments(page: number, limit: number): Observable<any[]> {
+    const nextPageUrl = `${this.apiUrl}?_page=${page}&_limit=${limit}`;
+    return this.http.get<any[]>(nextPageUrl);
+  }
+
 }
 
