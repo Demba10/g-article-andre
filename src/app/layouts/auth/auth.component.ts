@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Users } from 'src/app/models/users/users.model';
+import { UsersServicesService } from 'src/app/services/users-services.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,25 +14,44 @@ export class AuthComponent implements OnInit {
   // les Prprietés {
 
   users: Users[] = [];
+  usersUs: any[] = [];
   usersItem!: Users;
+  usersUsItem!: any;
+  temp!: any;
 
-  id: number = 0; 
+  id: number = 0;
   prenom!: string;
   nom!: string;
   email!: string;
   password!: string;
   confirmPassword!: string;
   auth: boolean = false;
+
   // }
-  
+
 
   // Les Methodes
 
   ngOnInit(): void {
-    this.users = JSON.parse(localStorage.getItem('users') || '[]') 
-  }
+    this.us.getUsers().subscribe(users => {
+      this.usersUs = users;
+      for (let i = 0; i < this.usersUs.length; i++) {
+        this.temp = new Users((i - 1), this.usersUs[i].name, "", this.usersUs[i].email, "dataplacholder", false);
+        this.users.push(this.temp);
+        localStorage.setItem('users', JSON.stringify(this.users));
+      }
+    });
+    this.users = JSON.parse(localStorage.getItem('users') || '[]');
+    this.us.getUserById(3).subscribe(users => {
+      this.usersUsItem = users;
+      console.log(this.usersUsItem);
+    });
 
-  constructor (private router: Router) {}
+  }
+  constructor(
+    private router: Router,
+    private us: UsersServicesService
+  ) { }
   // SwweetAlert2-methodes
 
   sweetalert(title: string, text: string, icon: any) {
@@ -59,7 +79,7 @@ export class AuthComponent implements OnInit {
     } else if (this.password != this.confirmPassword) {
       this.sweetalert('erreur', 'Les deux mot de passe sont different', 'error')
     } else {
-      this.users = JSON.parse(localStorage.getItem('users') || '[]') 
+      this.users = JSON.parse(localStorage.getItem('users') || '[]')
       this.usersItem = new Users(this.users.length, this.prenom, this.nom, this.email, this.password, this.auth);
       this.users.push(this.usersItem)
       localStorage.setItem('users', JSON.stringify(this.users));

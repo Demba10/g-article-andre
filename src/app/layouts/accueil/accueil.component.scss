@@ -1,0 +1,19 @@
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    background-color: white;
+    margin-left: -2.5% !important;
+}
+.main {
+    position: relative;
+    z-index: 99;
+    top: 100px;
+}
+// .art {
+//     height: max-content;
+// }
+.card-bla img {
+    width: 100%;
+    border-radius: 10px;
+}

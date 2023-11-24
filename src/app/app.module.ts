@@ -12,6 +12,8 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { AjoutArticleComponent } from './component/ajout-article/ajout-article.component';
 import { ListArticleComponent } from './component/list-article/list-article.component';
 import { CorbeilleComponent } from './component/corbeille/corbeille.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CommentsComponent } from './component/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,14 @@ import { CorbeilleComponent } from './component/corbeille/corbeille.component';
     SidebarComponent,
     AjoutArticleComponent,
     ListArticleComponent,
-    CorbeilleComponent
+    CorbeilleComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
